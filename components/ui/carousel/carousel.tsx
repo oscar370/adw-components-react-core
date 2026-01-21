@@ -63,7 +63,7 @@ export function Carousel({
 
   return (
     <div
-      className="group relative flex h-full w-full flex-col justify-center overflow-hidden rounded-2xl"
+      className="group relative h-full w-full overflow-hidden rounded-2xl"
       aria-roledescription={t("carousel.label")}
       aria-label={label || t("carousel.label")}
       onKeyDown={handleKeyDown}
@@ -77,39 +77,37 @@ export function Carousel({
         {`Showing slide number ${slideIndex + 1} of ${slides.length}`}
       </div>
 
-      <div className="absolute inset-0 overflow-hidden">
-        <AnimatePresence initial={false} custom={direction} mode="popLayout">
-          <motion.div
-            key={page}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "tween" },
-              opacity: { duration: 0.3 },
-            }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={1}
-            onDragEnd={(_, { offset, velocity }) => {
-              const swipe = swipePower(offset.x, velocity.x);
-              if (swipe < -swipeConfidenceThreshold) {
-                paginate(1);
-              } else if (swipe > swipeConfidenceThreshold) {
-                paginate(-1);
-              }
-            }}
-            role="group"
-            aria-roledescription={t("carouse.slide-label")}
-            aria-label={`${slideIndex + 1} of ${slides.length}`}
-            className="absolute h-full w-full cursor-grab touch-none active:cursor-grabbing"
-          >
-            {slides[slideIndex]}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+        <motion.div
+          key={page}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "tween" },
+            opacity: { duration: 0.3 },
+          }}
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={1}
+          onDragEnd={(_, { offset, velocity }) => {
+            const swipe = swipePower(offset.x, velocity.x);
+            if (swipe < -swipeConfidenceThreshold) {
+              paginate(1);
+            } else if (swipe > swipeConfidenceThreshold) {
+              paginate(-1);
+            }
+          }}
+          role="group"
+          aria-roledescription={t("carouse.slide-label")}
+          aria-label={`${slideIndex + 1} of ${slides.length}`}
+          className="h-full w-full cursor-grab touch-none active:cursor-grabbing"
+        >
+          {slides[slideIndex]}
+        </motion.div>
+      </AnimatePresence>
 
       <div className="group pointer-events-none absolute inset-0 z-5 flex items-center justify-between px-2">
         <div className="flex -translate-x-20 items-center justify-center overflow-hidden rounded-full bg-(--accent) opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
@@ -134,7 +132,7 @@ export function Carousel({
       </div>
 
       <div
-        className="absolute right-0 bottom-6 left-0 z-5 flex justify-center gap-0.5"
+        className="absolute right-0 bottom-2 left-0 z-5 flex justify-center gap-0.5"
         role="tablist"
       >
         {slides.map((_, index) => (

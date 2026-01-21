@@ -15,7 +15,7 @@ export const CarouselStory: Story = {
 
     return (
       <>
-        <main className="h-75 w-full">
+        <main className="aspect-video w-full">
           <Carousel slides={slides} />
         </main>
       </>
@@ -25,14 +25,8 @@ export const CarouselStory: Story = {
 
 function FirstSlide() {
   return (
-    <div className="relative h-full w-full overflow-hidden bg-gray-900">
-      <img
-        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
-        alt="First slide"
-        className="absolute h-full w-full object-cover opacity-60"
-        draggable="false"
-      />
-      <section className="absolute inset-0 flex flex-col justify-center p-12 text-white">
+    <div className="h-full w-full bg-[linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center">
+      <section className="flex flex-col justify-center p-12 text-white">
         <h2 className="mb-4 text-5xl font-bold tracking-tight drop-shadow-lg md:text-6xl">
           First Slide
         </h2>
@@ -49,7 +43,7 @@ function FirstSlide() {
 
 function SecondSlide() {
   return (
-    <section className="flex h-full w-full flex-col items-center justify-center bg-indigo-600 p-8 text-center text-white">
+    <section className="flex h-full flex-col items-center justify-center bg-indigo-600 p-8 text-center text-white">
       <Star className="mb-6 h-12 w-12 fill-yellow-400 text-yellow-400" />
       <blockquote className="max-w-2xl text-3xl leading-relaxed font-medium md:text-4xl">
         "Hi, i am the second slide"
