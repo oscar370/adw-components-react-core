@@ -1,7 +1,7 @@
-import { useIsMobile } from "@/core/hooks/use-is-mobile";
 import { ChevronLeft } from "lucide-react";
 import { createContext, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { useIsMobile } from "../../../hooks/use-is-mobile";
 
 type SidebarProps = {
   open: boolean;

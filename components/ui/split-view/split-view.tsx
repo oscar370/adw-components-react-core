@@ -1,4 +1,4 @@
-import { useIsMobile } from "@/core/hooks/use-is-mobile";
+import { useIsMobile } from "../../../hooks/use-is-mobile";
 
 type SplitViewProps = {
   children: React.ReactNode;
