@@ -4,26 +4,24 @@ import { ListBox } from "../list-box";
 import { ActionRow } from "./action-row";
 
 const meta = {
-  decorators: [
-    (Story) => (
-      <ListBox>
-        <Story />
-      </ListBox>
-    ),
-  ],
   component: ActionRow,
 } satisfies Meta<typeof ActionRow>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ActionRow>;
 
 export const ActionRowStory: Story = {
-  args: {
-    title: "User account",
-    subtitle: "Manage your data and synchronization",
-    icon: <User />,
-    as: "a",
-    href: "account",
-    children: <ChevronRight size={18} />,
-  },
+  render: () => (
+    <ListBox>
+      <ActionRow
+        title="User account"
+        subtitle="Manage your data and synchronization"
+        icon={<User />}
+        as="a"
+        href="account"
+      >
+        <ChevronRight size={18} />
+      </ActionRow>
+    </ListBox>
+  ),
 };

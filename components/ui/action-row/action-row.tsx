@@ -31,17 +31,17 @@ type AsButton = {
 type AsAnchor = {
   as: "a";
   href: string;
-  to?: never;
   isActive?: boolean;
   onClick?: (e?: ClickEvent) => void;
+  to?: never;
 };
 
 type AsLink = {
   as: typeof Link;
-  href?: never;
   to: string;
   isActive?: boolean;
   onClick?: (e?: ClickEvent) => void;
+  href?: never;
 };
 
 type ActionRowProps =
