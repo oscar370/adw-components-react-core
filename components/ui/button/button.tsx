@@ -1,20 +1,17 @@
 import clsx from "clsx";
-import type { HTMLAttributes } from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   variant?: "regular" | "flat" | "suggested" | "destructive" | "pill";
   accent?: string;
-  disabled?: boolean;
-  onClick?: () => void;
 };
 
 export function Button({
   children,
   variant = "regular",
   accent,
-  disabled,
-  onClick,
+  ...props
 }: ButtonProps) {
   const containerClasses = clsx(
     "h-fit w-fit shrink-0 overflow-hidden rounded-[9px] shadow-sm",
@@ -32,7 +29,7 @@ export function Button({
 
   return (
     <div className={containerClasses}>
-      <button className={buttonClasses} disabled={disabled} onClick={onClick}>
+      <button className={buttonClasses} {...props}>
         {children}
       </button>
     </div>

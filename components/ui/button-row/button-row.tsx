@@ -1,20 +1,17 @@
 import clsx from "clsx";
-import type { HTMLAttributes } from "react";
+import type { ButtonHTMLAttributes } from "react";
 
-type ButtonRowProps = HTMLAttributes<HTMLButtonElement> & {
+type ButtonRowProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   variant?: "regular" | "suggested" | "destructive";
   accent?: string;
-  disabled?: boolean;
-  onClick?: () => void;
 };
 
 export function ButtonRow({
   children,
   variant = "regular",
   accent,
-  disabled,
-  onClick,
+  ...props
 }: ButtonRowProps) {
   const containerClasses = clsx(
     variant === "regular" && "",
@@ -29,7 +26,7 @@ export function ButtonRow({
 
   return (
     <li className={containerClasses}>
-      <button className={buttonClasses} disabled={disabled} onClick={onClick}>
+      <button className={buttonClasses} {...props}>
         {children}
       </button>
     </li>
