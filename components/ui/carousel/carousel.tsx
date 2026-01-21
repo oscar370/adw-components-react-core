@@ -62,7 +62,7 @@ export function Carousel({
   }
 
   return (
-    <section
+    <div
       className="group relative flex h-full w-full flex-col justify-center overflow-hidden rounded-2xl"
       aria-roledescription={t("carousel.label")}
       aria-label={label || t("carousel.label")}
@@ -159,6 +159,6 @@ export function Carousel({
           </button>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

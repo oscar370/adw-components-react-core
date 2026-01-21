@@ -32,7 +32,7 @@ function FirstSlide() {
         className="absolute h-full w-full object-cover opacity-60"
         draggable="false"
       />
-      <div className="absolute inset-0 flex flex-col justify-center p-12 text-white">
+      <section className="absolute inset-0 flex flex-col justify-center p-12 text-white">
         <h2 className="mb-4 text-5xl font-bold tracking-tight drop-shadow-lg md:text-6xl">
           First Slide
         </h2>
@@ -42,14 +42,14 @@ function FirstSlide() {
         <button className="mt-8 w-fit rounded-full bg-white px-8 py-3 font-semibold text-gray-900 transition hover:bg-gray-200">
           Show more
         </button>
-      </div>
+      </section>
     </div>
   );
 }
 
 function SecondSlide() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center bg-indigo-600 p-8 text-center text-white">
+    <section className="flex h-full w-full flex-col items-center justify-center bg-indigo-600 p-8 text-center text-white">
       <Star className="mb-6 h-12 w-12 fill-yellow-400 text-yellow-400" />
       <blockquote className="max-w-2xl text-3xl leading-relaxed font-medium md:text-4xl">
         "Hi, i am the second slide"
@@ -58,14 +58,14 @@ function SecondSlide() {
         <div className="text-xl font-bold">oscar370</div>
         <div className="text-indigo-200">developer</div>
       </div>
-    </div>
+    </section>
   );
 }
 
 function ThirdSlide() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-500 to-teal-700 p-8">
-      <div className="w-full max-w-lg rounded-2xl bg-white p-8 text-gray-800 shadow-2xl">
+      <form className="w-full max-w-lg rounded-2xl bg-white p-8 text-gray-800 shadow-2xl">
         <div className="mb-4 flex items-center gap-3 text-emerald-600">
           <Mail size={32} />
           <h3 className="text-2xl font-bold">The third slide</h3>
@@ -81,7 +81,7 @@ function ThirdSlide() {
             Submit
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
