@@ -1,87 +1,44 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import React from "react";
 
-type ClickEvent = React.MouseEvent<HTMLElement>;
-
-type CommonProps = {
+type ActionRowOwnProps = {
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
   accent?: string;
   property?: boolean;
-  children?: React.ReactNode;
-};
-
-type AsDiv = {
-  as?: "div";
-  onClick?: never;
-  href?: never;
-  to?: never;
-  isActive?: never;
-};
-
-type AsButton = {
-  as: "button";
-  onClick: (e?: ClickEvent) => void;
-  href?: never;
-  to?: never;
-  isActive?: never;
-};
-
-type AsAnchor = {
-  as: "a";
-  href: string;
   isActive?: boolean;
-  onClick?: (e?: ClickEvent) => void;
-  to?: never;
 };
 
-type AsLink = {
-  as: typeof Link;
-  to: string;
-  isActive?: boolean;
-  onClick?: (e?: ClickEvent) => void;
-  href?: never;
-};
+type PolymorphicProps<E extends React.ElementType> = ActionRowOwnProps &
+  Omit<React.ComponentPropsWithoutRef<E>, keyof ActionRowOwnProps> & {
+    as?: E;
+  };
 
-type ActionRowProps =
-  | (CommonProps & AsDiv)
-  | (CommonProps & AsButton)
-  | (CommonProps & AsAnchor)
-  | (CommonProps & AsLink);
+type ActionRowProps<E extends React.ElementType = "div"> = PolymorphicProps<E>;
 
-export function ActionRow({
+export function ActionRow<E extends React.ElementType = "div">({
   title,
   subtitle,
   icon: Icon,
   accent,
   property,
-  as: Component = "div",
+  as,
   isActive,
-  onClick,
-  href,
-  to,
   children,
-}: ActionRowProps) {
-  const isInteractive =
-    Component === "button" || Component === "a" || Component === Link;
+  onClick,
+  className,
+  ...props
+}: ActionRowProps<E>) {
+  const Component = as || "div";
 
-  const componentProps: any = {
-    className: clsx(
-      "flex min-h-13 w-full items-center px-4 transition-colors",
-      isInteractive && !isActive && "cursor-pointer hover:bg-(--hover)",
-      isActive && "bg-(--active)",
-      !isInteractive && "select-text",
-    ),
-    "aria-current": isActive ? "page" : undefined,
-    onClick,
-  };
-
-  if (Component === Link && to) {
-    componentProps.to = to;
-  } else if (Component === "a" && href) {
-    componentProps.href = href;
-  }
+  const componentClassName = clsx(
+    "flex min-h-13 w-full items-center px-4 transition-colors",
+    onClick && !isActive && "cursor-pointer hover:bg-(--hover)",
+    isActive && "bg-(--active)",
+    !onClick && "select-text",
+    className,
+  );
 
   const iconClasses = clsx("mr-2", accent ? accent : "text-(--accent)");
   const titleClasses = clsx(
@@ -93,18 +50,20 @@ export function ActionRow({
 
   return (
     <li>
-      <Component {...componentProps}>
+      <Component
+        className={componentClassName}
+        aria-current={isActive ? "page" : undefined}
+        {...props}
+      >
         {Icon && (
           <div aria-hidden="true" className={iconClasses}>
             {Icon}
           </div>
         )}
-
         <div className="min-w-0 flex-1 text-left">
           <p className={titleClasses}>{title}</p>
           {subtitle && <p className={subtitleClasses}>{subtitle}</p>}
         </div>
-
         <div className="ml-4 flex items-center">{children}</div>
       </Component>
     </li>

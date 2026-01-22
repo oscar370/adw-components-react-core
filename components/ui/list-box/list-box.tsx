@@ -1,19 +1,10 @@
-type CommonProps = {
+type ListBoxProps = {
   title?: string;
   description?: string;
   headerButton?: React.ReactNode;
   children: React.ReactNode;
+  as?: "section" | "nav";
 };
-
-type AsSection = {
-  as?: "section";
-};
-
-type AsNav = {
-  as: "nav";
-};
-
-type ListBoxProps = (CommonProps & AsSection) | (CommonProps & AsNav);
 
 export function ListBox({
   title,
