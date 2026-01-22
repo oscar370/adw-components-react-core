@@ -1,26 +1,19 @@
-import clsx from "clsx";
 import type { InputHTMLAttributes } from "react";
 
 type EntryRowProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  id?: string;
 };
 
-export function EntryRow({ label, id, ...props }: EntryRowProps) {
-  const labelClasses = clsx(
-    "flex min-h-13 flex-col justify-center px-4 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)",
-  );
-
-  const inputClasses = clsx(
-    "w-full border-none bg-transparent outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100",
-  );
-
+export function EntryRow({ label, ...props }: EntryRowProps) {
   return (
     <li>
-      <label htmlFor={id} className={labelClasses}>
+      <label className="flex min-h-13 flex-col justify-center px-4 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)">
         <span className="w-full text-sm text-(--dim-fg)">{label}</span>
         <div className="flex items-center">
-          <input className={inputClasses} id={id} {...props} />
+          <input
+            className="w-full border-none bg-transparent outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100"
+            {...props}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
