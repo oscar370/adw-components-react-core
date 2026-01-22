@@ -28,7 +28,7 @@ export function Select<T extends string | number>({
 
   return (
     <Listbox value={value} onChange={onChange}>
-      <ListboxButton className="flex w-full cursor-pointer grid-cols-3 flex-col gap-0.5 rounded-xl px-4 py-2 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)">
+      <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5 transition-colors">
         <p className="text-start">{title}</p>
 
         <div className="h-full w-full rounded-md border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">

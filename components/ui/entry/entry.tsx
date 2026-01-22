@@ -6,7 +6,7 @@ type EntryProps = InputHTMLAttributes<HTMLInputElement> & {
 
 export function Entry({ title, ...props }: EntryProps) {
   return (
-    <label className="flex w-full cursor-pointer grid-cols-3 flex-col gap-0.5 rounded-xl px-4 py-2 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)">
+    <label className="flex w-full cursor-pointer flex-col gap-0.5 transition-colors">
       <span className="w-full">{title}</span>
 
       <input
