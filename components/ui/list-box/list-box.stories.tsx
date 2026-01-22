@@ -81,7 +81,7 @@ function List() {
 
       <ActionRow title="Account created on" subtitle="12 jan 2026" property />
 
-      <EntryRow label="Change status" value={"Sleeping"} />
+      <EntryRow title="Change status" value={"Sleeping"} />
 
       <ButtonRow>
         <Plus />

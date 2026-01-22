@@ -10,7 +10,7 @@ type Story = StoryObj<typeof meta>;
 
 export const EntryStory: Story = {
   args: {
-    label: "User",
+    title: "User",
     placeholder: "Enter your username",
   },
 };

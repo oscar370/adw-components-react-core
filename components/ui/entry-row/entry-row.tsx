@@ -1,14 +1,14 @@
 import type { InputHTMLAttributes } from "react";
 
 type EntryRowProps = InputHTMLAttributes<HTMLInputElement> & {
-  label: string;
+  title: string;
 };
 
-export function EntryRow({ label, ...props }: EntryRowProps) {
+export function EntryRow({ title, ...props }: EntryRowProps) {
   return (
     <li>
       <label className="flex min-h-13 flex-col justify-center px-4 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)">
-        <span className="w-full text-sm text-(--dim-fg)">{label}</span>
+        <span className="w-full text-sm text-(--dim-fg)">{title}</span>
         <div className="flex items-center">
           <input
             className="w-full border-none bg-transparent outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100"
