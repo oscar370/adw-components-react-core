@@ -11,6 +11,7 @@ export function Button({
   children,
   variant = "regular",
   accent,
+  className,
   ...props
 }: ButtonProps) {
   const containerClasses = clsx(
@@ -21,6 +22,7 @@ export function Button({
     variant === "destructive" && "bg-(--destructive) text-white",
     variant === "pill" && "rounded-full bg-(--card-bg)",
     accent && accent,
+    className,
   );
 
   const buttonClasses = clsx(
