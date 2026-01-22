@@ -18,7 +18,7 @@ export function ListBox({
     title || description || headerButton ? true : false;
 
   return (
-    <Component className="mt-4">
+    <Component className="mt-4 w-full">
       {shouldRenderHeader && (
         <header className="flex items-center px-px">
           <div className="flex-1">
