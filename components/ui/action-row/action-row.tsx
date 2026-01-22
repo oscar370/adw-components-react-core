@@ -8,6 +8,7 @@ type ActionRowOwnProps = {
   accent?: string;
   property?: boolean;
   isActive?: boolean;
+  forceHover?: boolean;
 };
 
 type PolymorphicProps<E extends React.ElementType> = ActionRowOwnProps &
@@ -25,6 +26,7 @@ export function ActionRow<E extends React.ElementType = "div">({
   property,
   as,
   isActive,
+  forceHover = false,
   children,
   onClick,
   className,
@@ -34,7 +36,8 @@ export function ActionRow<E extends React.ElementType = "div">({
 
   const componentClassName = clsx(
     "flex min-h-13 w-full items-center px-4 transition-colors",
-    onClick && !isActive && "cursor-pointer hover:bg-(--hover)",
+    (onClick && !isActive) ||
+      (forceHover && !isActive && "cursor-pointer hover:bg-(--hover)"),
     isActive && "bg-(--active)",
     !onClick && "select-text",
     className,

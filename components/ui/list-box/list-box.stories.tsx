@@ -102,8 +102,15 @@ export const ListBoxNavStory: Story = {
 function NavList() {
   return (
     <>
-      <ActionRow title="Home" as="a" href="home" isActive icon={<Home />} />
-      <ActionRow title="User" as="a" href="home" icon={<User />} />
+      <ActionRow
+        title="Home"
+        as="a"
+        href="home"
+        isActive
+        forceHover
+        icon={<Home />}
+      />
+      <ActionRow title="User" as="a" href="home" forceHover icon={<User />} />
     </>
   );
 }
