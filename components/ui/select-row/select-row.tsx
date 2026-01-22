@@ -15,9 +15,9 @@ type SelectRowProps<T extends string | number> = {
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
-  value: T;
+  value?: T;
   options: Option<T>[];
-  onChange: (value: T) => void;
+  onChange?: (value: T) => void;
 };
 
 export function SelectRow<T extends string | number>({

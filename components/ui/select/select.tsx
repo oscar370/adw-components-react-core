@@ -13,9 +13,9 @@ type Option<T extends string | number> = {
 
 type SelectProps<T extends string | number> = {
   title: string;
-  value: T;
+  value?: T;
   options: Option<T>[];
-  onChange: (value: T) => void;
+  onChange?: (value: T) => void;
 };
 
 export function Select<T extends string | number>({
