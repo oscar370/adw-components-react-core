@@ -2,6 +2,7 @@ type SwitchRowProps = {
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
+  accent?: string;
   checked: boolean;
   onChange: () => void;
 };
@@ -10,6 +11,7 @@ export function SwitchRow({
   title,
   subtitle,
   icon: Icon,
+  accent,
   checked,
   onChange,
 }: SwitchRowProps) {
@@ -17,7 +19,10 @@ export function SwitchRow({
     <li>
       <label className="flex min-h-13 cursor-pointer items-center px-4 transition-colors hover:bg-(--hover)">
         {Icon && (
-          <div aria-hidden="true" className="mr-2 text-(--accent)">
+          <div
+            aria-hidden="true"
+            className={`mr-2 ${accent ? accent : "text-(--accent"}`}
+          >
             {Icon}
           </div>
         )}

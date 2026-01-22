@@ -23,7 +23,7 @@ export const ButtonStory: Story = {
 
       <Button variant="pill">Pill</Button>
 
-      <Button accent="bg-[#3a944a]! text-white">Force accent</Button>
+      <Button className="bg-[#3a944a]! text-white">Force background</Button>
     </div>
   ),
 };

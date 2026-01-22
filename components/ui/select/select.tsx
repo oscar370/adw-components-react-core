@@ -31,7 +31,9 @@ export function Select<T extends string | number>({
       <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5 transition-colors">
         <p className="text-start">{title}</p>
 
-        <div className="h-full w-full rounded-md border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">
+        <div className="relative h-full w-full rounded-md border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">
+          <div className="absolute inset-0 transition-colors hover:bg-(--hover)"></div>
+
           <span className="flex h-full items-center justify-start gap-1">
             {selectedLabel}
             <ChevronDown size={16} />
@@ -39,10 +41,7 @@ export function Select<T extends string | number>({
         </div>
       </ListboxButton>
 
-      <ListboxOptions
-        anchor="bottom end"
-        className="mt-1 min-w-50 rounded-xl bg-(--dialog-bg) p-1 shadow-sm focus:outline-none"
-      >
+      <ListboxOptions className="mt-1 min-w-50 rounded-xl bg-(--dialog-bg) p-1 shadow-sm focus:outline-none">
         {options.map((option) => (
           <ListboxOption
             key={option.value}

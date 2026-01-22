@@ -4,31 +4,32 @@ import type { ButtonHTMLAttributes } from "react";
 type ButtonRowProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
   variant?: "regular" | "suggested" | "destructive";
-  accent?: string;
 };
 
 export function ButtonRow({
   children,
   variant = "regular",
-  accent,
   className,
+  disabled,
   ...props
 }: ButtonRowProps) {
-  const containerClasses = clsx(
+  const buttonClasses = clsx(
+    "relative flex min-h-12 w-full cursor-pointer items-center justify-center gap-1 px-4.25 disabled:cursor-not-allowed disabled:opacity-60",
     variant === "regular" && "",
     variant === "suggested" && "bg-(--accent) text-white",
     variant === "destructive" && "bg-(--destructive) text-white",
-    accent && accent,
     className,
   );
 
-  const buttonClasses = clsx(
-    "flex min-h-12 w-full cursor-pointer items-center justify-center gap-1 px-4.25 transition-colors hover:bg-(--hover) disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-transparent",
+  const overlayClasses = clsx(
+    "absolute inset-0 transition-colors hover:bg-(--hover)",
+    disabled && "hover:bg-transparent",
   );
 
   return (
-    <li className={containerClasses}>
-      <button className={buttonClasses} {...props}>
+    <li>
+      <button className={buttonClasses} disabled={disabled} {...props}>
+        <div aria-hidden className={overlayClasses}></div>
         {children}
       </button>
     </li>

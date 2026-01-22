@@ -15,6 +15,7 @@ type SelectRowProps<T extends string | number> = {
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
+  accent?: string;
   value?: T;
   options: Option<T>[];
   onChange?: (value: T) => void;
@@ -24,6 +25,7 @@ export function SelectRow<T extends string | number>({
   title,
   subtitle,
   icon: Icon,
+  accent,
   value,
   options,
   onChange,
@@ -35,7 +37,10 @@ export function SelectRow<T extends string | number>({
       <Listbox value={value} onChange={onChange}>
         <ListboxButton className="flex min-h-13 w-full cursor-pointer items-center px-4 text-left transition-colors hover:bg-(--hover)">
           {Icon && (
-            <div aria-hidden="true" className="mr-2 text-(--accent)">
+            <div
+              aria-hidden="true"
+              className={`mr-2 ${accent ? accent : "text-(--accent"}`}
+            >
               {Icon}
             </div>
           )}
