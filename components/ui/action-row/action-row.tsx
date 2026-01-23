@@ -56,6 +56,7 @@ export function ActionRow<E extends React.ElementType = "div">({
       <Component
         className={componentClassName}
         aria-current={isActive ? "page" : undefined}
+        onClick={onClick}
         {...props}
       >
         {Icon && (
