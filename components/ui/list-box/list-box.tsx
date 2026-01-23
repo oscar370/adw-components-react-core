@@ -1,24 +1,33 @@
-type ListBoxProps = {
+type ListBoxOwnProps = {
   title?: string;
   description?: string;
   headerButton?: React.ReactNode;
   children: React.ReactNode;
-  as?: "section" | "nav";
 };
 
-export function ListBox({
+type PolymorphicProps<E extends React.ElementType> = ListBoxOwnProps &
+  Omit<React.ComponentPropsWithoutRef<E>, keyof ListBoxOwnProps> & {
+    as?: E;
+  };
+
+type ListBoxProps<E extends React.ElementType = "section"> =
+  PolymorphicProps<E>;
+
+export function ListBox<E extends React.ElementType = "section">({
   title,
   description,
-  as: Component = "section",
+  as,
   headerButton,
   children,
-}: ListBoxProps) {
-  const isSection = Component === "section";
+  ...props
+}: ListBoxProps<E>) {
+  const Component = as || "section";
+  const isNav = Component === "nav";
   const shouldRenderHeader =
     title || description || headerButton ? true : false;
 
   return (
-    <Component className="mt-4 w-full">
+    <Component className="mt-4 w-full" {...props}>
       {shouldRenderHeader && (
         <header className="flex items-center px-px">
           <div className="flex-1">
@@ -36,7 +45,7 @@ export function ListBox({
 
       <ul
         className={
-          isSection
+          !isNav
             ? "divider-y w-full divide-y divide-(--border) overflow-hidden rounded-xl bg-(--card-bg) p-0 shadow-sm"
             : "space-y-1 overflow-y-auto [&>li>a]:rounded-xl [&>li>button]:rounded-xl"
         }
