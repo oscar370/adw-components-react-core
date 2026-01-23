@@ -57,6 +57,13 @@ export function Carousel({
   };
 
   function handleKeyDown(e: React.KeyboardEvent) {
+    const target = e.target as HTMLElement;
+    const isInput = target.closest(
+      'input, textarea, select, [contenteditable="true"]',
+    );
+
+    if (isInput) return;
+
     if (e.key === "ArrowLeft") paginate(-1);
     if (e.key === "ArrowRight") paginate(1);
   }
