@@ -29,14 +29,12 @@ export function ListBox<E extends React.ElementType = "section">({
   return (
     <Component className="mt-4 w-full" {...props}>
       {shouldRenderHeader && (
-        <header className="mb-1 flex items-center px-px">
+        <header className="mb-1 flex items-center px-1">
           <div className="flex-1">
-            {title && (
-              <h2 className="px-1 font-bold tracking-wider">{title}</h2>
-            )}
+            {title && <h2 className="font-bold tracking-wider">{title}</h2>}
 
             {description && (
-              <p className="mb-1 px-1 text-xs text-(--dim-fg)">{description}</p>
+              <p className="mb-1 text-xs text-(--dim-fg)">{description}</p>
             )}
           </div>
           {headerButton}
@@ -46,7 +44,7 @@ export function ListBox<E extends React.ElementType = "section">({
       <ul
         className={
           !isNav
-            ? "divider-y w-full divide-y divide-(--border) overflow-hidden rounded-xl bg-(--card-bg) p-0 shadow-sm"
+            ? "w-full divide-y divide-(--border) overflow-hidden rounded-xl bg-(--card-bg) p-0 shadow-sm"
             : "space-y-1 overflow-y-auto [&>li>a]:rounded-xl [&>li>button]:rounded-xl"
         }
       >
