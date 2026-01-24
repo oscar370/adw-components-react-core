@@ -25,7 +25,7 @@ export function Modal({ title, open, onClose, children }: DialogProps) {
           <header className="px-1">
             <nav className="grid grid-cols-3">
               <span
-                aria-labelledby={t("modal.title")}
+                aria-label={t("modal.title")}
                 className="col-end-3 text-center"
               >
                 {title}
@@ -54,7 +54,7 @@ export function Modal({ title, open, onClose, children }: DialogProps) {
             </nav>
           </header>
 
-          <div className="px-4">{children}</div>
+          <div className="mt-2 px-4">{children}</div>
         </DialogPanel>
       </div>
     </Dialog>
