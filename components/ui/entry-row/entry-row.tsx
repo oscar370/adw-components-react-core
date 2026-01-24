@@ -15,6 +15,7 @@ export function EntryRow({ title, ...props }: EntryRowProps) {
             {...props}
           />
           <svg
+            aria-hidden
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
             viewBox="0 0 16 16"

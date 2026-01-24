@@ -64,9 +64,9 @@ export function ActionRow<E extends React.ElementType = "div">({
             {Icon}
           </div>
         )}
-        <div className="min-w-0 flex-1 text-left">
-          <p className={titleClasses}>{title}</p>
-          {subtitle && <p className={subtitleClasses}>{subtitle}</p>}
+        <div className="flex min-w-0 flex-1 flex-col text-left">
+          <span className={titleClasses}>{title}</span>
+          {subtitle && <span className={subtitleClasses}>{subtitle}</span>}
         </div>
         <div className="ml-4 flex items-center">{children}</div>
       </Component>

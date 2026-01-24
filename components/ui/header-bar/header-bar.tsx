@@ -9,7 +9,6 @@ type HeaderBarProps = {
 };
 
 export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
-  const { t } = useTranslation("arias");
   return (
     <header className="py-2">
       <nav className="grid grid-cols-3">
@@ -19,7 +18,7 @@ export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
 
         <ul className="col-end-3 text-center">
           <li>
-            <span aria-labelledby={t("header-bar.title")}> {title} </span>
+            <h1> {title} </h1>
           </li>
         </ul>
       </nav>

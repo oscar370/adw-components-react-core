@@ -46,9 +46,9 @@ export function SelectRow<T extends string | number>({
           )}
 
           <div className="min-w-0 flex-1">
-            <p className="leading-tight">{title}</p>
+            <span className="leading-tight">{title}</span>
             {subtitle && (
-              <p className="mt-0.5 text-sm text-(--dim-fg)">{subtitle}</p>
+              <span className="mt-0.5 text-sm text-(--dim-fg)">{subtitle}</span>
             )}
           </div>
 
