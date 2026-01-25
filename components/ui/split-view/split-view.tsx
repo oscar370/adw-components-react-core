@@ -9,9 +9,7 @@ export function SplitView({ children }: SplitViewProps) {
 
   return (
     <div
-      className={
-        !isMobile ? "grid grid-cols-[minmax(min-content,200px)_1fr]" : undefined
-      }
+      className={`${!isMobile ? "grid grid-cols-[minmax(min-content,200px)_1fr]" : undefined}`}
     >
       {children}
     </div>
