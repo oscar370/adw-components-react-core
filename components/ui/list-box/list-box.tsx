@@ -27,7 +27,7 @@ export function ListBox<E extends React.ElementType = "section">({
     title || description || headerButton ? true : false;
 
   return (
-    <Component className="mt-4 w-full" {...props}>
+    <Component className={`${isNav ? "mt-0" : "mt-4"} w-full`} {...props}>
       {shouldRenderHeader && (
         <header className="mb-1 flex items-center px-1">
           <div className="flex-1">

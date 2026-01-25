@@ -10,14 +10,14 @@ type HeaderBarProps = {
 
 export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
   return (
-    <header className="py-2">
-      <nav className="grid grid-cols-3">
-        <ul className="px-1">
-          <li>{isSubPage ? <BackButton /> : <Sidebar.ToggleButton />}</li>
-        </ul>
+    <header>
+      <nav>
+        <ul className="grid h-full min-h-8 w-full grid-cols-3 items-center justify-center">
+          <li className="flex items-center">
+            {isSubPage ? <BackButton /> : <Sidebar.ToggleButton />}
+          </li>
 
-        <ul className="col-end-3 text-center">
-          <li>
+          <li className="col-end-3 flex items-center justify-center leading-0">
             <h1> {title} </h1>
           </li>
         </ul>

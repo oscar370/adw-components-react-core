@@ -10,6 +10,7 @@ type SidebarProps = {
 };
 
 type SidebarPanelProps = {
+  title: string;
   children: React.ReactNode;
 };
 
@@ -35,7 +36,7 @@ export function Sidebar({ open: isOpen, onToggle, children }: SidebarProps) {
   );
 }
 
-Sidebar.Panel = function SidebarPanel({ children }: SidebarPanelProps) {
+Sidebar.Panel = function SidebarPanel({ title, children }: SidebarPanelProps) {
   const context = useContext(SidebarContext);
   const isMobile = useIsMobile();
   if (!context) return null;
@@ -45,6 +46,13 @@ Sidebar.Panel = function SidebarPanel({ children }: SidebarPanelProps) {
     <aside
       className={`inset-0 z-5 min-h-dvh bg-(--sidebar-bg) px-1 transition-transform ${!isOpen && isMobile ? "translate-x-[-100dvw]" : ""} ${isMobile ? "fixed" : "static"}`}
     >
+      <header>
+        <nav>
+          <ul className="flex min-h-8 items-center justify-center text-base leading-0">
+            <li> {title} </li>
+          </ul>
+        </nav>
+      </header>
       {children}
     </aside>
   );
