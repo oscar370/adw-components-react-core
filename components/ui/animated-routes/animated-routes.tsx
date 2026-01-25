@@ -9,7 +9,6 @@ type AnimatedRoutesProps = {
 export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   const location = useLocation();
   const direction = useNavDirection();
-  console.log(direction);
 
   return (
     <AnimatePresence mode="wait" custom={direction}>
