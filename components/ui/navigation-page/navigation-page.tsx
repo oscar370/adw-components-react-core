@@ -12,23 +12,25 @@ export function NavigationPage({
   isSubPage = false,
   children,
 }: NavigationPageProps) {
-  const isForward = usePresenceData() as boolean;
+  const direction = usePresenceData() as "lateral" | "forward" | "backward";
+  const isLateral = direction === "lateral";
+  const isForward = direction === "forward";
+
+  const xInitialDirection = isLateral ? "-100%" : isForward ? "100%" : "0%";
+  const xExitDirection = isLateral ? "100%" : isForward ? "0%" : "100%";
 
   return (
     <div className="h-full w-full overflow-hidden">
       <motion.div
         variants={{
           initial: {
-            x: isForward ? "100%" : "0%",
-            zIndex: isForward ? 0 : 2,
+            x: xInitialDirection,
           },
           animate: {
             x: "0%",
-            zIndex: 1,
           },
           exit: {
-            x: isForward ? "0%" : "100%",
-            zIndex: isForward ? 2 : 0,
+            x: xExitDirection,
           },
         }}
         initial={isSubPage ? "initial" : false}

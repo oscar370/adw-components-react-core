@@ -1,5 +1,5 @@
 import { AnimatePresence } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, useLocation } from "react-router-dom";
 
 type AnimatedRoutesProps = {
@@ -8,10 +8,11 @@ type AnimatedRoutesProps = {
 
 export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   const location = useLocation();
-  const isForward = useForward();
+  const direction = useNavDirection();
+  console.log(direction);
 
   return (
-    <AnimatePresence mode="popLayout" custom={isForward}>
+    <AnimatePresence mode="wait" custom={direction}>
       <Routes location={location} key={location.pathname}>
         {children}
       </Routes>
@@ -19,17 +20,24 @@ export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   );
 }
 
-function useForward() {
+function useNavDirection() {
   const location = useLocation();
-  const [depths, setDepths] = useState({ prev: 0, current: 0 });
-
+  const [prevDepth, setPrevDepth] = useState(0);
   const currentDepth = location.pathname.split("/").filter(Boolean).length;
 
-  if (currentDepth !== depths.current) {
-    setDepths({ prev: depths.current, current: currentDepth });
-  }
+  const direction = (() => {
+    if (currentDepth === prevDepth) {
+      return "lateral";
+    }
+    if (currentDepth > prevDepth) {
+      return "forward";
+    }
+    return "backward";
+  })();
 
-  const isForward = depths.prev === 0 ? true : depths.current >= depths.prev;
+  useEffect(() => {
+    setPrevDepth(currentDepth);
+  }, [currentDepth]);
 
-  return isForward;
+  return direction;
 }
