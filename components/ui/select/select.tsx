@@ -28,16 +28,16 @@ export function Select<T extends string | number>({
 
   return (
     <Listbox value={value} onChange={onChange}>
-      <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5 transition-colors">
+      <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5">
         <span className="text-start">{title}</span>
 
-        <div className="relative h-full w-full overflow-hidden rounded-md border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">
-          <div className="absolute inset-0 transition-colors hover:bg-(--hover)"></div>
-
-          <span className="flex h-full items-center justify-start gap-1">
-            {selectedLabel}
-            <ChevronDown size={16} />
-          </span>
+        <div className="overflow-hidden rounded-md transition-colors hover:bg-(--hover)">
+          <div className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">
+            <span className="flex h-full items-center justify-start gap-1">
+              {selectedLabel}
+              <ChevronDown size={16} />
+            </span>
+          </div>
         </div>
       </ListboxButton>
 

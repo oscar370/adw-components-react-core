@@ -22,28 +22,29 @@ export function Button({
 }: ButtonProps) {
   const buttonClasses = twMerge(
     clsx(
-      "relative flex min-h-8 cursor-pointer items-center justify-center gap-1 overflow-hidden rounded-lg px-4.25 py-1.25 disabled:cursor-not-allowed disabled:opacity-60",
+      "flex min-h-8 cursor-pointer items-center justify-center gap-1 px-4.25 py-1.25 disabled:cursor-not-allowed disabled:opacity-60",
       variant === "regular" && "bg-(--card-bg)",
       variant === "flat" && "bg-transparent shadow-none",
       variant === "suggested" && "bg-(--accent) text-white",
       variant === "destructive" && "bg-(--destructive) text-white",
-      variant === "pill" && "rounded-full bg-(--card-bg)",
-      variant === "pillSuggested" && "rounded-full bg-(--accent) text-white",
+      variant === "pill" && "bg-(--card-bg)",
+      variant === "pillSuggested" && "bg-(--accent) text-white",
       className,
     ),
   );
 
-  const overlayClasses = twMerge(
+  const wrapperClasses = twMerge(
     clsx(
-      "absolute inset-0 transition-colors hover:bg-(--hover)",
-      disabled && "hover:bg-transparent",
+      "overflow-hidden rounded-lg transition-colors hover:bg-(--hover)",
+      (variant === "pill" || variant === "pillSuggested") && "rounded-full",
     ),
   );
 
   return (
-    <button className={buttonClasses} disabled={disabled} {...props}>
-      <div aria-hidden className={overlayClasses}></div>
-      {children}
-    </button>
+    <div className={wrapperClasses}>
+      <button className={buttonClasses} disabled={disabled} {...props}>
+        {children}
+      </button>
+    </div>
   );
 }
