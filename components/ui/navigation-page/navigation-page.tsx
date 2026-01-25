@@ -12,12 +12,9 @@ export function NavigationPage({
   isSubPage = false,
   children,
 }: NavigationPageProps) {
-  const direction = usePresenceData() as "lateral" | "forward" | "backward";
-  const isLateral = direction === "lateral";
-  const isForward = direction === "forward";
-
-  const xInitialDirection = isLateral ? "-100%" : isForward ? "100%" : "0%";
-  const xExitDirection = isLateral ? "100%" : isForward ? "0%" : "100%";
+  const isPop = usePresenceData() as boolean;
+  const xInitialDirection = isPop ? "0%" : "100%";
+  const xExitDirection = isPop ? "100%" : "0%";
 
   return (
     <div className="h-full w-full overflow-hidden">

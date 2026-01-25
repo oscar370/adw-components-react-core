@@ -1,6 +1,5 @@
 import { AnimatePresence } from "motion/react";
-import { useEffect, useState } from "react";
-import { Routes, useLocation } from "react-router-dom";
+import { Routes, useLocation, useNavigationType } from "react-router-dom";
 
 type AnimatedRoutesProps = {
   children: React.ReactNode;
@@ -8,35 +7,14 @@ type AnimatedRoutesProps = {
 
 export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   const location = useLocation();
-  const direction = useNavDirection();
+  const navType = useNavigationType();
+  const isPop = navType === "POP";
 
   return (
-    <AnimatePresence mode="wait" custom={direction}>
+    <AnimatePresence mode="wait" custom={isPop}>
       <Routes location={location} key={location.pathname}>
         {children}
       </Routes>
     </AnimatePresence>
   );
-}
-
-function useNavDirection() {
-  const location = useLocation();
-  const [prevDepth, setPrevDepth] = useState(0);
-  const currentDepth = location.pathname.split("/").filter(Boolean).length;
-
-  const direction = (() => {
-    if (currentDepth === prevDepth) {
-      return "lateral";
-    }
-    if (currentDepth > prevDepth) {
-      return "forward";
-    }
-    return "backward";
-  })();
-
-  useEffect(() => {
-    setPrevDepth(currentDepth);
-  }, [currentDepth]);
-
-  return direction;
 }
