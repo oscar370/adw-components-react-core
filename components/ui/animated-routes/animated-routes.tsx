@@ -8,7 +8,7 @@ type AnimatedRoutesProps = {
 export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   const location = useLocation();
   const navType = useNavigationType();
-  const isPop = navType === "POP";
+  const isPop = navType === "POP" || navType === "REPLACE";
 
   return (
     <AnimatePresence mode="popLayout" custom={isPop}>

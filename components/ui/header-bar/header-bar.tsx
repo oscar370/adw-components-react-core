@@ -34,7 +34,7 @@ function BackButton() {
       aria-label={t("header-bar.back-button")}
       title={t("header-bar.back-button")}
       className="cursor-pointer"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate("..", { replace: true })}
     >
       <ChevronLeft />
     </button>
