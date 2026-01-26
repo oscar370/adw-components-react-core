@@ -3,7 +3,7 @@ import React from "react";
 
 type ActionRowOwnProps = {
   title: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   icon?: React.ReactNode;
   accent?: string;
   property?: boolean;

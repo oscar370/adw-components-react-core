@@ -13,7 +13,7 @@ type Option<T extends string | number> = {
 
 type SelectRowProps<T extends string | number> = {
   title: string;
-  subtitle?: string;
+  subtitle?: string | React.ReactNode;
   icon?: React.ReactNode;
   accent?: string;
   value?: T;

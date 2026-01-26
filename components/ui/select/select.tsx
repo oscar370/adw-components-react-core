@@ -8,7 +8,7 @@ import { Check, ChevronDown } from "lucide-react";
 
 type Option<T extends string | number> = {
   value: T;
-  label: string;
+  label: string | React.ReactNode;
 };
 
 type SelectProps<T extends string | number> = {
@@ -43,7 +43,7 @@ export function Select<T extends string | number>({
 
       <ListboxOptions
         anchor="bottom start"
-        className="mt-1 min-w-50 rounded-xl bg-(--dialog-bg) p-1 shadow-md focus:outline-none"
+        className="mt-1 rounded-xl bg-(--dialog-bg) p-1 shadow-md focus:outline-none"
       >
         {options.map((option) => (
           <ListboxOption
