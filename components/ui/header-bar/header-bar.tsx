@@ -6,15 +6,20 @@ import { Sidebar } from "../sidebar";
 type HeaderBarProps = {
   title: string;
   isSubPage?: boolean;
+  backTo?: string;
 };
 
-export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
+export function HeaderBar({ title, isSubPage, backTo }: HeaderBarProps) {
   return (
     <header>
       <nav>
         <ul className="grid h-full min-h-8 w-full grid-cols-3 items-center justify-center">
           <li className="flex items-center">
-            {isSubPage ? <BackButton /> : <Sidebar.ToggleButton />}
+            {isSubPage ? (
+              <BackButton backTo={backTo} />
+            ) : (
+              <Sidebar.ToggleButton />
+            )}
           </li>
 
           <li className="col-end-3 flex items-center justify-center leading-0">
@@ -26,7 +31,11 @@ export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
   );
 }
 
-function BackButton() {
+type BackButtonProps = {
+  backTo?: string;
+};
+
+function BackButton({ backTo }: BackButtonProps) {
   const navigate = useNavigate();
   const { t } = useTranslation("arias");
   return (
@@ -34,7 +43,7 @@ function BackButton() {
       aria-label={t("header-bar.back-button")}
       title={t("header-bar.back-button")}
       className="cursor-pointer"
-      onClick={() => navigate("..", { replace: true })}
+      onClick={() => navigate(backTo ? backTo : "..", { replace: true })}
     >
       <ChevronLeft />
     </button>
