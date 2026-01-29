@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes } from "react";
 
 type EntryProps = InputHTMLAttributes<HTMLInputElement> & {
-  title: string;
+  title?: string;
 };
 
 export function Entry({ title, ...props }: EntryProps) {
