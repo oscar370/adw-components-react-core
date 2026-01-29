@@ -10,6 +10,6 @@ type Story = StoryObj<typeof meta>;
 
 export const EntrySearchStory: Story = {
   args: {
-    placeholder: "Serch anything",
+    placeholder: "Search anything",
   },
 };
