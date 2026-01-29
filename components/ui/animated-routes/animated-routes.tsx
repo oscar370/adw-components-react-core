@@ -11,7 +11,7 @@ export function AnimatedRoutes({ children }: AnimatedRoutesProps) {
   const isPop = navType === "POP" || navType === "REPLACE";
 
   return (
-    <AnimatePresence mode="popLayout" custom={isPop}>
+    <AnimatePresence mode="wait" custom={isPop}>
       <Routes location={location} key={location.pathname}>
         {children}
       </Routes>
