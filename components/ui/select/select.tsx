@@ -12,7 +12,7 @@ type Option<T extends string | number> = {
 };
 
 type SelectProps<T extends string | number> = {
-  title: string;
+  title?: string;
   value?: T;
   options: Option<T>[];
   onChange?: (value: T) => void;
@@ -29,7 +29,7 @@ export function Select<T extends string | number>({
   return (
     <Listbox value={value} onChange={onChange}>
       <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5">
-        <span className="text-start">{title}</span>
+        {title && <span className="text-start">{title}</span>}
 
         <div className="overflow-hidden rounded-md transition-colors hover:bg-(--hover)">
           <div className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">

@@ -13,15 +13,26 @@ export const SelectStory: Story = {
   render: () => {
     const [select, setSelect] = useState("visible");
     return (
-      <Select
-        title="Visibility"
-        onChange={setSelect}
-        options={[
-          { label: "Visible", value: "visible" },
-          { label: "Invisible", value: "invisible" },
-        ]}
-        value={select}
-      />
+      <div className="flex flex-col gap-4">
+        <Select
+          title="Visibility"
+          onChange={setSelect}
+          options={[
+            { label: "Visible", value: "visible" },
+            { label: "Invisible", value: "invisible" },
+          ]}
+          value={select}
+        />
+
+        <Select
+          onChange={setSelect}
+          options={[
+            { label: "Visible", value: "visible" },
+            { label: "Invisible", value: "invisible" },
+          ]}
+          value={select}
+        />
+      </div>
     );
   },
 };
