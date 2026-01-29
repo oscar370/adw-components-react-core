@@ -17,7 +17,7 @@ export function SwitchRow({
 }: SwitchRowProps) {
   return (
     <li>
-      <label className="flex min-h-13 cursor-pointer items-center px-4 transition-colors hover:bg-(--hover)">
+      <label className="flex min-h-13 cursor-pointer items-center px-4 transition-colors hover:bg-(--hover) focus:bg-(--hover)">
         {Icon && (
           <div
             aria-hidden="true"

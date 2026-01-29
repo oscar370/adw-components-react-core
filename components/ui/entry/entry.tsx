@@ -11,7 +11,7 @@ export function Entry({ title, ...props }: EntryProps) {
 
       <div className="overflow-hidden rounded-md transition-colors hover:bg-(--hover)">
         <input
-          className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100"
+          className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:bg-(--hover) focus:opacity-100"
           {...props}
         />
       </div>

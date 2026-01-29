@@ -7,7 +7,7 @@ type EntryRowProps = InputHTMLAttributes<HTMLInputElement> & {
 export function EntryRow({ title, ...props }: EntryRowProps) {
   return (
     <li>
-      <label className="flex min-h-13 flex-col justify-center px-4 transition-colors focus-within:bg-(--hover) hover:bg-(--hover)">
+      <label className="flex min-h-13 flex-col justify-center px-4 transition-colors focus-within:bg-(--hover) hover:bg-(--hover) focus:bg-(--hover)">
         <span className="w-full text-sm text-(--dim-fg)">{title}</span>
         <div className="flex items-center">
           <input

@@ -21,7 +21,7 @@ export function ButtonRow({
   );
 
   const overlayClasses = clsx(
-    "absolute inset-0 transition-colors hover:bg-(--hover)",
+    "absolute inset-0 transition-colors hover:bg-(--hover) focus:bg-(--hover)",
     disabled && "hover:bg-transparent",
   );
 

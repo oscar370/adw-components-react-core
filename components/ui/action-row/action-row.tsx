@@ -37,7 +37,7 @@ export function ActionRow<E extends React.ElementType = "div">({
   const componentClassName = clsx(
     "flex min-h-13 w-full items-center px-4 transition-colors",
     ((onClick && !isActive) || (forceHover && !isActive)) &&
-      "cursor-pointer hover:bg-(--hover)",
+      "cursor-pointer hover:bg-(--hover) focus:bg-(--hover)",
     isActive && "bg-(--active)",
     !onClick && "select-text",
     className,

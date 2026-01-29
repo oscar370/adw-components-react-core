@@ -13,7 +13,7 @@ export function CurrencyEntry({ title, ...props }: CurrencyEntryProps) {
 
       <div className="relative overflow-hidden rounded-md">
         <CurrencyInput
-          className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100"
+          className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:bg-(--hover) focus:opacity-100"
           {...props}
         />
 
