@@ -27,7 +27,7 @@ export function ExpanderRow({ title, subtitle, children }: ExpanderRowProps) {
         </DisclosureButton>
       </li>
 
-      <DisclosurePanel className="bg-(--expander-card-bg)">
+      <DisclosurePanel className="divide-y divide-(--border) bg-(--expander-card-bg)">
         {children}
       </DisclosurePanel>
     </Disclosure>
