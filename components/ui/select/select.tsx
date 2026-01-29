@@ -15,6 +15,7 @@ type SelectProps<T extends string | number> = {
   title?: string;
   value?: T;
   options: Option<T>[];
+  placeholder?: string;
   onChange?: (value: T) => void;
 };
 
@@ -22,6 +23,7 @@ export function Select<T extends string | number>({
   title,
   value,
   options,
+  placeholder,
   onChange,
 }: SelectProps<T>) {
   const selectedLabel = options.find((opt) => opt.value === value)?.label;
@@ -32,9 +34,13 @@ export function Select<T extends string | number>({
         {title && <span className="text-start">{title}</span>}
 
         <div className="overflow-hidden rounded-md transition-colors hover:bg-(--hover)">
-          <div className="h-full w-full border-none bg-(--card-bg) p-2 outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100">
-            <span className="flex h-full items-center justify-start gap-1">
-              {selectedLabel}
+          <div className="h-full w-full border-none bg-(--card-bg) p-2 outline-none">
+            <span
+              className={`flex h-full items-center justify-start gap-1 ${
+                !selectedLabel && "text-(--dim-fg) opacity-80"
+              }`}
+            >
+              {!selectedLabel ? placeholder : selectedLabel}
               <ChevronDown size={16} />
             </span>
           </div>
@@ -53,7 +59,7 @@ export function Select<T extends string | number>({
           >
             <span className="block truncate">{option.label}</span>
 
-            <span className="ml-auto hidden group-data-selected:block">
+            <span className="ml-1 hidden group-data-selected:block">
               <Check size={16} />
             </span>
           </ListboxOption>

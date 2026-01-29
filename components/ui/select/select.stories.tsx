@@ -12,6 +12,8 @@ type Story = StoryObj<typeof Select>;
 export const SelectStory: Story = {
   render: () => {
     const [select, setSelect] = useState("visible");
+    const [anotherSelect, setAnotherSelect] = useState("");
+
     return (
       <div className="flex flex-col gap-4">
         <Select
@@ -25,12 +27,13 @@ export const SelectStory: Story = {
         />
 
         <Select
-          onChange={setSelect}
           options={[
             { label: "Visible", value: "visible" },
             { label: "Invisible", value: "invisible" },
           ]}
-          value={select}
+          placeholder="Select a option"
+          onChange={setAnotherSelect}
+          value={anotherSelect}
         />
       </div>
     );

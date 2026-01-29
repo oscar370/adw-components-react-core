@@ -17,6 +17,7 @@ type SelectRowProps<T extends string | number> = {
   icon?: React.ReactNode;
   accent?: string;
   value?: T;
+  placeholder?: string;
   options: Option<T>[];
   onChange?: (value: T) => void;
 };
@@ -27,6 +28,7 @@ export function SelectRow<T extends string | number>({
   icon: Icon,
   accent,
   value,
+  placeholder,
   options,
   onChange,
 }: SelectRowProps<T>) {
@@ -52,8 +54,10 @@ export function SelectRow<T extends string | number>({
             )}
           </div>
 
-          <div className="ml-4 flex items-center gap-1">
-            <span>{selectedLabel}</span>
+          <div
+            className={`ml-4 flex items-center gap-1 ${!selectedLabel && "text-(--dim-fg) opacity-80"}`}
+          >
+            <span> {!selectedLabel ? placeholder : selectedLabel} </span>
 
             <ChevronDown size={16} />
           </div>
@@ -71,7 +75,7 @@ export function SelectRow<T extends string | number>({
             >
               <span className="block truncate">{option.label}</span>
 
-              <span className="ml-auto hidden group-data-selected:block">
+              <span className="ml-1 hidden group-data-selected:block">
                 <Check size={16} />
               </span>
             </ListboxOption>
