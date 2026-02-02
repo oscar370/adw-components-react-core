@@ -4,14 +4,12 @@ import { HeaderBar } from "../header-bar";
 type NavigationPageProps = {
   title: string;
   isSubPage?: boolean;
-  backTo?: string;
   children: React.ReactNode;
 };
 
 export function NavigationPage({
   title,
   isSubPage = false,
-  backTo,
   children,
 }: NavigationPageProps) {
   const isPop = usePresenceData() as boolean;
@@ -41,7 +39,7 @@ export function NavigationPage({
           duration: 0.25,
         }}
       >
-        <HeaderBar title={title} isSubPage={isSubPage} backTo={backTo} />
+        <HeaderBar title={title} isSubPage={isSubPage} />
 
         <main className="mx-auto max-w-150 px-1 pb-1">{children}</main>
       </motion.div>

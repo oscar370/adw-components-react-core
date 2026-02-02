@@ -1,25 +1,20 @@
 import { ChevronLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Sidebar } from "../sidebar";
 
 type HeaderBarProps = {
   title: string;
   isSubPage?: boolean;
-  backTo?: string;
 };
 
-export function HeaderBar({ title, isSubPage, backTo }: HeaderBarProps) {
+export function HeaderBar({ title, isSubPage }: HeaderBarProps) {
   return (
     <header>
       <nav>
         <ul className="grid h-full min-h-8 w-full grid-cols-3 items-center justify-center">
           <li className="flex items-center">
-            {isSubPage ? (
-              <BackButton backTo={backTo} />
-            ) : (
-              <Sidebar.ToggleButton />
-            )}
+            {isSubPage ? <BackButton /> : <Sidebar.ToggleButton />}
           </li>
 
           <li className="col-end-3 flex items-center justify-center leading-0">
@@ -31,19 +26,30 @@ export function HeaderBar({ title, isSubPage, backTo }: HeaderBarProps) {
   );
 }
 
-type BackButtonProps = {
-  backTo?: string;
-};
-
-function BackButton({ backTo }: BackButtonProps) {
+function BackButton() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation("arias");
+
+  function handleBack() {
+    if (location.state?.backTo) {
+      navigate(location.state.backTo);
+      return;
+    }
+
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate("..");
+    }
+  }
+
   return (
     <button
       aria-label={t("header-bar.back-button")}
       title={t("header-bar.back-button")}
       className="cursor-pointer"
-      onClick={() => navigate(backTo ? backTo : "..", { replace: true })}
+      onClick={handleBack}
     >
       <ChevronLeft />
     </button>

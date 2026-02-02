@@ -31,7 +31,7 @@ export function ListBox<E extends React.ElementType = "section">({
       {shouldRenderHeader && (
         <header className="mb-1 flex items-center px-1">
           <div className="flex-1">
-            {title && <h2 className="font-bold tracking-wider">{title}</h2>}
+            {title && <h2 className="font-bold">{title}</h2>}
 
             {description && (
               <p className="mb-1 text-xs text-(--dim-fg)">{description}</p>
