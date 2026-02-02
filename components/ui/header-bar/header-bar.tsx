@@ -39,9 +39,13 @@ function BackButton() {
 
     if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
-    } else {
-      navigate("..", { replace: true });
     }
+
+    if (location.state?.fallback) {
+      navigate(location.state.fallback, { replace: true });
+    }
+
+    navigate("..", { replace: true });
   }
 
   return (
