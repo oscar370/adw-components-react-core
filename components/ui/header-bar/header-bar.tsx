@@ -33,14 +33,14 @@ function BackButton() {
 
   function handleBack() {
     if (location.state?.backTo) {
-      navigate(location.state.backTo);
+      navigate(location.state.backTo, { replace: true });
       return;
     }
 
     if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
     } else {
-      navigate("..");
+      navigate("..", { replace: true });
     }
   }
 
