@@ -14,7 +14,7 @@ export function ButtonRow({
   ...props
 }: ButtonRowProps) {
   const buttonClasses = clsx(
-    "group relative flex min-h-12 w-full cursor-pointer items-center justify-center gap-1 px-4.25 disabled:cursor-not-allowed disabled:opacity-60",
+    "group relative flex min-h-12 w-full cursor-pointer items-center justify-center gap-1 px-4.25 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60",
     variant === "suggested" && "bg-(--accent) text-white",
     variant === "destructive" && "bg-(--destructive) text-white",
     className,
