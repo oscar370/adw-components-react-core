@@ -56,7 +56,7 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-size: 0.938rem;
-  font-family: "Cantarell", "Inter", sans-serif;
+  font-family: "Inter", "Cantarell", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
