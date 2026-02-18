@@ -37,18 +37,18 @@ export function ActionRow<E extends React.ElementType = "div">({
   const componentClassName = clsx(
     "flex min-h-13 w-full items-center px-4 transition-colors",
     ((onClick && !isActive) || (forceHover && !isActive)) &&
-      "cursor-pointer hover:bg-(--hover) focus:outline-none focus-visible:bg-(--hover)",
-    isActive && "bg-(--active) focus:outline-none",
+      "hover:bg-hover focus-visible:bg-hover cursor-pointer focus:outline-none",
+    isActive && "bg-active focus:outline-none",
     !onClick && "select-text",
     className,
   );
 
-  const iconClasses = clsx("mr-2", accent ? accent : "text-(--accent)");
+  const iconClasses = clsx("mr-2", accent ? accent : "text-accent");
   const titleClasses = clsx(
-    property ? "mb-0.5 text-sm text-(--dim-fg)" : "leading-tight",
+    property ? "text-dim-foreground mb-0.5 text-sm" : "leading-tight",
   );
   const subtitleClasses = clsx(
-    !property ? "mt-0.5 text-sm text-(--dim-fg)" : "leading-tight",
+    !property ? "text-dim-foreground mt-0.5 text-sm" : "leading-tight",
   );
 
   return (

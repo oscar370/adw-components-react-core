@@ -33,11 +33,11 @@ export function Select<T extends string | number>({
       <ListboxButton className="flex w-full cursor-pointer flex-col gap-0.5">
         {title && <span className="text-start">{title}</span>}
 
-        <div className="overflow-hidden rounded-md shadow-sm transition-colors hover:bg-(--hover)">
-          <div className="h-full w-full border-none bg-(--card-bg) p-2 outline-none">
+        <div className="hover:bg-hover overflow-hidden rounded-md shadow-sm transition-colors">
+          <div className="bg-card-background h-full w-full border-none p-2 outline-none">
             <span
               className={`flex h-full items-center justify-start gap-1 ${
-                !selectedLabel && "text-(--dim-fg) opacity-80"
+                !selectedLabel && "text-dim-foreground opacity-80"
               }`}
             >
               {!selectedLabel ? placeholder : selectedLabel}
@@ -49,13 +49,13 @@ export function Select<T extends string | number>({
 
       <ListboxOptions
         anchor="bottom start"
-        className="mt-1 rounded-xl bg-(--dialog-bg) p-1 shadow-md focus:outline-none"
+        className="bg-dialog-background mt-1 rounded-xl p-1 shadow-md focus:outline-none"
       >
         {options.map((option) => (
           <ListboxOption
             key={option.value}
             value={option.value}
-            className="group flex cursor-pointer items-center rounded-lg px-3 py-2.5 data-focus:bg-(--hover)"
+            className="group data-focus:bg-hover flex cursor-pointer items-center rounded-lg px-3 py-2.5"
           >
             <span className="block truncate">{option.label}</span>
 

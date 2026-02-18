@@ -117,9 +117,9 @@ export function Carousel({
       </AnimatePresence>
 
       <div className="group pointer-events-none absolute inset-0 z-5 flex items-center justify-between px-2">
-        <div className="flex -translate-x-20 items-center justify-center overflow-hidden rounded-full bg-(--accent) opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
+        <div className="bg-accent flex -translate-x-20 items-center justify-center overflow-hidden rounded-full opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
           <button
-            className="pointer-events-auto cursor-pointer p-1 text-white transition-colors hover:bg-(--hover)"
+            className="hover:bg-hover pointer-events-auto cursor-pointer p-1 text-white transition-colors"
             onClick={() => paginate(-1)}
             aria-label={t("carousel.previous-label")}
           >
@@ -127,9 +127,9 @@ export function Carousel({
           </button>
         </div>
 
-        <div className="flex translate-x-20 items-center justify-center overflow-hidden rounded-full bg-(--accent) opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
+        <div className="bg-accent flex translate-x-20 items-center justify-center overflow-hidden rounded-full opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100">
           <button
-            className="pointer-events-auto cursor-pointer p-1 text-white transition-colors hover:bg-(--hover)"
+            className="hover:bg-hover pointer-events-auto cursor-pointer p-1 text-white transition-colors"
             onClick={() => paginate(1)}
             aria-label={t("carousel.next-label")}
           >

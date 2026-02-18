@@ -44,7 +44,7 @@ Sidebar.Panel = function SidebarPanel({ title, children }: SidebarPanelProps) {
 
   return (
     <aside
-      className={`inset-0 z-5 min-h-dvh bg-(--sidebar-bg) px-1 transition-transform ${!isOpen && isMobile ? "translate-x-[-100dvw]" : ""} ${isMobile ? "fixed" : "static"}`}
+      className={`bg-sidebar-background inset-0 z-5 min-h-dvh px-1 transition-transform ${!isOpen && isMobile ? "translate-x-[-100dvw]" : ""} ${isMobile ? "fixed" : "static"}`}
     >
       <header aria-hidden={title ? false : true}>
         <nav>

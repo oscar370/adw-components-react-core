@@ -48,6 +48,22 @@
   }
 }
 
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-dim-foreground: var(--dim-fg);
+  --color-header-background: var(--header-bg);
+  --color-card-background: var(--card-bg);
+  --color-expander-card-background: var(--expander-card-bg);
+  --color-sidebar-background: var(--sidebar-bg);
+  --color-dialog-background: var(--dialog-bg);
+  --color-hover: var(--hover);
+  --color-active: var(--active);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+}
+
 @theme {
   --text-sm: 0.813rem;
 }
@@ -57,7 +73,5 @@ body {
   color: var(--fg);
   font-size: 0.938rem;
   font-family: "Inter", "Cantarell", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   user-select: none;
 }

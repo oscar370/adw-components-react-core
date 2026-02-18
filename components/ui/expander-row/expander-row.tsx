@@ -15,11 +15,13 @@ export function ExpanderRow({ title, subtitle, children }: ExpanderRowProps) {
   return (
     <Disclosure>
       <li>
-        <DisclosureButton className="group flex min-h-13 w-full cursor-pointer items-center px-4 transition-colors hover:bg-(--hover) focus:outline-none focus-visible:bg-(--hover)">
+        <DisclosureButton className="group hover:bg-hover focus-visible:bg-hover flex min-h-13 w-full cursor-pointer items-center px-4 transition-colors focus:outline-none">
           <div className="flex min-w-0 flex-1 flex-col text-left">
             <span className="leading-tight">{title}</span>
             {subtitle && (
-              <span className="mt-0.5 text-sm text-(--dim-fg)">{subtitle}</span>
+              <span className="text-dim-foreground mt-0.5 text-sm">
+                {subtitle}
+              </span>
             )}
           </div>
 
@@ -27,7 +29,7 @@ export function ExpanderRow({ title, subtitle, children }: ExpanderRowProps) {
         </DisclosureButton>
       </li>
 
-      <DisclosurePanel className="divide-y divide-(--border) bg-(--expander-card-bg)">
+      <DisclosurePanel className="divide-border bg-expander-card-background divide-y">
         {children}
       </DisclosurePanel>
     </Disclosure>

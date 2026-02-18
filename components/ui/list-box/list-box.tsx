@@ -1,7 +1,14 @@
+import { Content } from "./content";
+import { Description } from "./description";
+import { Header } from "./header";
+import { HeaderAction } from "./header-action";
+import { Root } from "./root";
+import { Title } from "./title";
+
 type ListBoxOwnProps = {
   title?: string;
   description?: string;
-  headerButton?: React.ReactNode;
+  headerAction?: React.ReactNode;
   children: React.ReactNode;
 };
 
@@ -17,34 +24,35 @@ export function ListBox<E extends React.ElementType = "section">({
   title,
   description,
   as,
-  headerButton,
+  headerAction,
   children,
+  className,
   ...props
 }: ListBoxProps<E>) {
   const Component = as || "section";
   const isNav = Component === "nav";
   const shouldRenderHeader =
-    title || description || headerButton ? true : false;
+    title || description || headerAction ? true : false;
 
   return (
-    <Component className={`${isNav ? "mt-0" : "mt-4"} w-full`} {...props}>
+    <Component className={`w-full ${className}`} {...props}>
       {shouldRenderHeader && (
         <header className="mb-1 flex items-center px-1">
           <div className="flex-1">
             {title && <h2 className="font-bold">{title}</h2>}
 
             {description && (
-              <p className="mb-1 text-xs text-(--dim-fg)">{description}</p>
+              <p className="text-dim-foreground mb-1 text-xs">{description}</p>
             )}
           </div>
-          {headerButton}
+          {headerAction && headerAction}
         </header>
       )}
 
       <ul
         className={
           !isNav
-            ? "w-full divide-y divide-(--border) overflow-hidden rounded-xl bg-(--card-bg) p-0 shadow-sm"
+            ? "divide-border bg-card-background w-full divide-y overflow-hidden rounded-xl p-0 shadow-sm"
             : "space-y-1 overflow-y-auto [&>li>a]:rounded-xl [&>li>button]:rounded-xl"
         }
       >
@@ -53,3 +61,10 @@ export function ListBox<E extends React.ElementType = "section">({
     </Component>
   );
 }
+
+ListBox.Root = Root;
+ListBox.Header = Header;
+ListBox.HeaderAction = HeaderAction;
+ListBox.Title = Title;
+ListBox.Description = Description;
+ListBox.Content = Content;

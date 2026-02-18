@@ -8,11 +8,11 @@ type EntryRowProps = InputHTMLAttributes<HTMLInputElement> & {
 export function EntryRow({ title, disabledIcon, ...props }: EntryRowProps) {
   return (
     <li>
-      <label className="flex min-h-13 flex-col justify-center px-4 transition-colors hover:bg-(--hover) has-[input:focus-visible]:bg-(--hover)">
-        <span className="w-full text-sm text-(--dim-fg)">{title}</span>
+      <label className="hover:bg-hover has-[input:focus-visible]:bg-hover flex min-h-13 flex-col justify-center px-4 transition-colors">
+        <span className="text-dim-foreground w-full text-sm">{title}</span>
         <div className="flex items-center">
           <input
-            className="w-full border-none bg-transparent outline-none placeholder:text-(--dim-fg) placeholder:opacity-80 focus:opacity-100"
+            className="placeholder:text-dim-foreground w-full border-none bg-transparent outline-none placeholder:opacity-80 focus:opacity-100"
             {...props}
           />
           {!disabledIcon && (

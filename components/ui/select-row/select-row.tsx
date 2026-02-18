@@ -37,7 +37,7 @@ export function SelectRow<T extends string | number>({
   return (
     <li>
       <Listbox value={value} onChange={onChange}>
-        <ListboxButton className="flex min-h-13 w-full cursor-pointer items-center px-4 text-left transition-colors hover:bg-(--hover) focus:outline-none focus-visible:bg-(--hover)">
+        <ListboxButton className="hover:bg-hover focus-visible:bg-hover flex min-h-13 w-full cursor-pointer items-center px-4 text-left transition-colors focus:outline-none">
           {Icon && (
             <div
               aria-hidden="true"
@@ -50,12 +50,14 @@ export function SelectRow<T extends string | number>({
           <div className="min-w-0 flex-1">
             <span className="leading-tight">{title}</span>
             {subtitle && (
-              <span className="mt-0.5 text-sm text-(--dim-fg)">{subtitle}</span>
+              <span className="text-dim-foreground mt-0.5 text-sm">
+                {subtitle}
+              </span>
             )}
           </div>
 
           <div
-            className={`ml-4 flex items-center gap-1 ${!selectedLabel && "text-(--dim-fg) opacity-80"}`}
+            className={`ml-4 flex items-center gap-1 ${!selectedLabel && "text-dim-foreground opacity-80"}`}
           >
             <span> {!selectedLabel ? placeholder : selectedLabel} </span>
 
@@ -65,13 +67,13 @@ export function SelectRow<T extends string | number>({
 
         <ListboxOptions
           anchor="bottom end"
-          className="mt-1 min-w-50 rounded-xl bg-(--dialog-bg) p-1 shadow-sm focus:outline-none"
+          className="bg-dialog-background mt-1 min-w-50 rounded-xl p-1 shadow-sm focus:outline-none"
         >
           {options.map((option) => (
             <ListboxOption
               key={option.value}
               value={option.value}
-              className="group flex cursor-pointer items-center rounded-lg px-3 py-2.5 data-focus:bg-(--hover)"
+              className="group data-focus:bg-hover flex cursor-pointer items-center rounded-lg px-3 py-2.5"
             >
               <span className="block truncate">{option.label}</span>
 

@@ -20,10 +20,10 @@ export function Box({
     linked && "overflow-hidden rounded-lg *:rounded-none",
     linked &&
       align === "horizontal" &&
-      "*:first-child:rounded-l-lg *:last-child:rounded-r-lg divide-x divide-(--border)",
+      "*:first-child:rounded-l-lg *:last-child:rounded-r-lg divide-border divide-x",
     linked &&
       align === "vertical" &&
-      "*:first-child:rounded-t-lg *:last-child:rounded-b-lg divide-y divide-(--border)",
+      "*:first-child:rounded-t-lg *:last-child:rounded-b-lg divide-border divide-y",
   );
 
   return <div className={boxClasses}>{children}</div>;

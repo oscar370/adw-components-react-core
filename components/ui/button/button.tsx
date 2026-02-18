@@ -23,19 +23,19 @@ export function Button({
   const buttonClasses = twMerge(
     clsx(
       "flex min-h-8 cursor-pointer items-center justify-center gap-1 px-4.25 py-1.25 disabled:cursor-not-allowed disabled:opacity-60",
-      variant === "regular" && "bg-(--card-bg)",
+      variant === "regular" && "bg-card-background",
       variant === "flat" && "bg-transparent shadow-none",
-      variant === "suggested" && "bg-(--accent) text-white",
-      variant === "destructive" && "bg-(--destructive) text-white",
-      variant === "pill" && "bg-(--card-bg)",
-      variant === "pillSuggested" && "bg-(--accent) text-white",
+      variant === "suggested" && "bg-accent text-white",
+      variant === "destructive" && "bg-destructive text-white",
+      variant === "pill" && "bg-card-background",
+      variant === "pillSuggested" && "bg-accent text-white",
       className,
     ),
   );
 
   const wrapperClasses = twMerge(
     clsx(
-      "w-fit overflow-hidden rounded-lg transition-colors hover:bg-(--hover) has-[button:focus-visible]:bg-(--hover)",
+      "hover:bg-hover has-[button:focus-visible]:bg-hover w-fit overflow-hidden rounded-lg transition-colors",
       (variant === "pill" || variant === "pillSuggested") && "rounded-full",
     ),
   );

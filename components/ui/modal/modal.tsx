@@ -19,7 +19,7 @@ export function Modal({ title, open, onClose, children }: DialogProps) {
 
       <div className="fixed inset-0 flex w-screen items-center justify-center">
         <DialogPanel
-          className="z-10 max-w-150 overflow-y-auto rounded-xl bg-(--dialog-bg) py-2 shadow-sm duration-100 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
+          className="bg-dialog-background z-10 max-w-150 overflow-y-auto rounded-xl py-2 shadow-sm duration-100 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
           transition
         >
           <header className="px-1">
