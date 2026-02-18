@@ -67,7 +67,8 @@ export function SelectRow<T extends string | number>({
 
         <ListboxOptions
           anchor="bottom end"
-          className="bg-dialog-background mt-1 min-w-50 rounded-xl p-1 shadow-sm focus:outline-none"
+          transition
+          className="bg-dialog-background mt-1 min-w-50 origin-top rounded-xl p-1 shadow-sm transition ease-out focus:outline-none data-closed:scale-95 data-closed:opacity-0"
         >
           {options.map((option) => (
             <ListboxOption
